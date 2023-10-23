@@ -1,0 +1,44 @@
+<app-header-menu></app-header-menu>
+<div class="container" [ngClass]="{'d-grid position-fixed vh-100': servicios.length < 1}">
+  <h2>Servicios</h2>
+  <div class="mb-3" *ngIf="servicios.length > 0; else elseServiciosTemplate">
+  <div class="list-group">
+    <div tabindex="0" aria-label="Abrir menú" role="button" (click)="openFullscreen(content, i)" *ngFor="let servicio of servicios; let i = index" class="list-group-item list-group-item-action btn btn-light mb-1">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ servicio.barrioOrigen }} - {{ servicio.barrioDestino }}</h5>
+        <small class="d-flex gap-2 text-nowrap">{{ servicio.fecha }} <button (click)="remover(servicio)" class="align-self-baseline btn btn-danger btn-sm" aria-label="Remover"><i class="bi bi-trash3-fill"></i></button></small>
+      </div>
+      <p class="mb-1">Valor: ${{ servicio.valor }} | Solicitado por: {{ servicio.nombresUsuario }} {{ servicio.apellidosUsuario }}</p>
+    </div>
+    </div>
+  </div>
+  <ng-template class="h-100 d-grid align-middle" #elseServiciosTemplate>
+    No hay servicios pendientes en la zona!
+  </ng-template>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Detalles del Servicio</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.close('Close click')"></button>
+  </div>
+  <div class="modal-body">
+    <img class="img-fluid mb-3" src="https://s1.eestatic.com/2015/02/15/elandroidelibre/el_androide_libre_11259763_182926228_640x315.jpg" alt="Mapa de Google">
+    <p><strong>Barrio Origen:</strong> {{ servicioActual.barrioOrigen }}</p>
+    <p><strong>Barrio Destino:</strong> {{ servicioActual.barrioDestino }}</p>
+    <p><strong>Fecha:</strong> {{ servicioActual.fecha }}</p>
+    <p><strong>Valor:</strong> ${{ servicioActual.valor }}</p>
+    <p><strong>Solicitado por:</strong> {{ servicioActual.nombresUsuario }} {{ servicioActual.apellidosUsuario }}</p>
+    <p><strong>SUsuario:</strong> {{ servicioActual.nombreUsuario }}</p>
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group w-100" role="group" aria-label="Botnes del servicio">
+      <button *ngIf="!mostrarTomarServicio" type="button" class="btn btn-outline-danger btn-sm w-auto" (click)="finalizarServicio()">Cancelar</button>
+      <button *ngIf="mostrarTomarServicio" type="button" class="btn btn-primary btn-sm w-100" (click)="tomarServicio()">Tomar el Servicio</button>
+      <button *ngIf="mostrarIrPorElUsuario" type="button" class="btn btn-primary btn-sm w-100" (click)="irPorUsuario()">Ir por el usuario</button>
+      <button *ngIf="mostrarLlevarAlUsuario" type="button" class="btn btn-primary btn-sm w-100" (click)="llevarAlUsuario()">Llevar al usuario</button>
+      <button *ngIf="mostrarLlamarUsuario" type="button" class="btn btn-success btn-sm w-100" (click)="llamarUsuario()"><i class="bi bi-telephone"></i> Llamar al Usuario</button>
+      <button *ngIf="mostrarFinalizar" type="button" class="btn btn-primary btn-sm w-100" (click)="finalizarServicio()">Finalizar, hemos llegado</button>
+    </div>
+  </div>
+</ng-template>

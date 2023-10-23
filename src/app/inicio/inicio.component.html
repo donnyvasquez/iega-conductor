@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4 text-center">
+      <h2 class="mt-4 mb-4">Iniciar Sesión</h2>
+      <form>
+        <div class="form-group">
+          <label for="usuario">Usuario</label>
+          <input autocomplete="off" type="text" id="usuario" name="usuario" class="form-control" placeholder="Usuario" [(ngModel)]="usuario" (input)="validarCampos()">
+        </div>
+        <div class="form-group">
+          <label for="contrasena">Contraseña</label>
+          <input autocomplete="off" type="password" id="contrasena" name="contrasena" class="form-control" placeholder="Contraseña" [(ngModel)]="contrasena" (input)="validarCampos()">
+        </div>
+        <button class="btn btn-primary my-3 w-100 w-md-auto" [disabled]="botonDesabilitado" (click)="iniciarSesion()">Iniciar Sesión</button>
+      </form>
+      <div class="mt-4">
+        <a routerLink="/registro">Registrarse</a>
+      </div>
+      <div class="mt-4">
+        <p class="mb-2">Iniciar sesión con:</p>
+        <div class="btn-group" role="group" aria-label="Login con redes sociales">
+          <button class="btn btn-danger mr-2">
+            <i class="bi bi-google"></i> Google
+          </button>
+          <button class="btn btn-secondary mr-2">
+            <i class="bi bi-apple"></i> Apple
+          </button>
+          <button class="btn btn-facebook">
+            <i class="bi bi-facebook"></i> Facebook
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

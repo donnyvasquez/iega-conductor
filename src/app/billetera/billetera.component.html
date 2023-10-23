@@ -1,0 +1,17 @@
+<app-header-menu></app-header-menu>
+<div class="container">
+  <h2>Movimientos de Billetera</h2>
+  <div class="list-group mb-3">
+    <div class="list-group-item d-flex gap-3">
+      <button type="button" class="btn btn-sm btn-nequi w-100">
+        <img src="/assets/nequi-logo.svg" width="24" height="24" alt="Icono Nequi"> Vincular mi Nequi
+      </button>
+      <button class="btn btn-sm btn-primary text-nowrap">Recarga <i class="bi bi-plus-square-fill"></i></button>
+    </div>
+    <div *ngFor="let movimiento of movimientos" class="list-group-item">
+      <h3>{{ movimiento.detalleDelMovimiento }}</h3>
+      <p class="mb-0">Tipo de Movimiento: {{ movimiento.tipoDeMovimiento }}</p>
+      <p class="mb-0">Valor del Movimiento: ${{ movimiento.valorDelMovimiento }}</p>
+    </div>
+  </div>
+</div>

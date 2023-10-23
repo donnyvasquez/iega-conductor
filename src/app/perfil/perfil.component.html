@@ -1,0 +1,25 @@
+<app-header-menu></app-header-menu>
+<div class="container">
+  <div class="list-group mb-3">
+    <div class="list-group-item">
+      <img [src]="usuario.fotoUrl" alt="Foto del Usuario" class="rounded-circle">
+    </div>
+    <div class="list-group-item">
+      <div class="d-flex w-100 justify-content-between">
+        <h3 class="mb-1">{{ usuario.nombreCompleto }}</h3>
+        <small>{{ usuario.calificacion }} <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star"></i> <i class="bi bi-star"></i></small>
+      </div>
+    </div>
+    <div class="list-group-item">
+      <p class="mb-1">Teléfono: {{ usuario.telefono }}</p>
+    </div>
+    <div class="list-group-item">
+      <p class="mb-1">Email: {{ usuario.email }}</p>
+    </div>
+    <div class="list-group-item">
+      <p class="mb-1">Estado: {{ usuario.estado }}</p>
+    </div>
+  </div>
+
+
+</div>
