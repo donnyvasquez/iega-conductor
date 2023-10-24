@@ -20,7 +20,8 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Detalles del Servicio</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.close('Close click')"></button>
+    <button *ngIf="mostrarTomarServicio" type="button" class="btn-close" aria-label="Close" (click)="modal.close('Close click')"></button>
+    <button *ngIf="!mostrarTomarServicio" type="button" class="btn btn-outline-danger btn-sm w-auto" (click)="finalizarServicio()">Cancelar</button>
   </div>
   <div class="modal-body">
     <img class="img-fluid mb-3" src="https://s1.eestatic.com/2015/02/15/elandroidelibre/el_androide_libre_11259763_182926228_640x315.jpg" alt="Mapa de Google">
@@ -33,12 +34,11 @@
   </div>
   <div class="modal-footer">
     <div class="btn-group w-100" role="group" aria-label="Botnes del servicio">
-      <button *ngIf="!mostrarTomarServicio" type="button" class="btn btn-outline-danger btn-sm w-auto" (click)="finalizarServicio()">Cancelar</button>
-      <button *ngIf="mostrarTomarServicio" type="button" class="btn btn-primary btn-sm w-100" (click)="tomarServicio()">Tomar el Servicio</button>
-      <button *ngIf="mostrarIrPorElUsuario" type="button" class="btn btn-primary btn-sm w-100" (click)="irPorUsuario()">Ir por el usuario</button>
-      <button *ngIf="mostrarLlevarAlUsuario" type="button" class="btn btn-primary btn-sm w-100" (click)="llevarAlUsuario()">Llevar al usuario</button>
-      <button *ngIf="mostrarLlamarUsuario" type="button" class="btn btn-success btn-sm w-100" (click)="llamarUsuario()"><i class="bi bi-telephone"></i> Llamar al Usuario</button>
-      <button *ngIf="mostrarFinalizar" type="button" class="btn btn-primary btn-sm w-100" (click)="finalizarServicio()">Finalizar, hemos llegado</button>
+      <button *ngIf="mostrarTomarServicio" type="button" class="btn btn-primary btn-lg w-100" (click)="tomarServicio()">Tomar el Servicio</button>
+      <button *ngIf="mostrarIrPorElUsuario" type="button" class="btn btn-primary btn-lg w-100" (click)="irPorUsuario()">Ir por el usuario</button>
+      <button *ngIf="mostrarLlevarAlUsuario" type="button" class="btn btn-primary btn-lg w-100" (click)="llevarAlUsuario()">Llevar al usuario</button>
+      <button *ngIf="mostrarLlamarUsuario" type="button" class="btn btn-success btn-lg w-100" (click)="llamarUsuario()"><i class="bi bi-telephone"></i> Llamar al Usuario</button>
+      <button *ngIf="mostrarFinalizar" type="button" class="btn btn-primary btn-lg w-100" (click)="finalizarServicio()">Finalizar, hemos llegado</button>
     </div>
   </div>
 </ng-template>
